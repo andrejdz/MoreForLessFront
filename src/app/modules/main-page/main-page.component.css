@@ -1,0 +1,17 @@
+.card-title{
+    font-size: 14pt
+}
+
+.card-img-top{
+    margin: 5px auto;
+    max-width: 120px;
+    max-height:160px;
+    width: auto;
+    height: auto;
+}
+
+.goods-spinner {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+}

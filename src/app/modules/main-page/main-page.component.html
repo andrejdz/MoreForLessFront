@@ -1,0 +1,31 @@
+<!-- Page Content -->
+<div *ngIf="goodsLoading" class="fa fa-spinner fa-pulse fa-3x fa-fw goods-spinner"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="list-group">
+        <a href="#" class="list-group-item">Category 1</a>
+        <a href="#" class="list-group-item">Category 2</a>
+        <a href="#" class="list-group-item">Category 3</a>
+      </div>
+    </div>
+    <!-- /.col-lg-3 -->
+    <div class="col-lg-3 col-md-6 mb-4" *ngFor="let good of goods">
+      <div class="card h-100">
+        <img class="card-img-top" src="{{good.linkOnPicture}}" alt="No image">
+        <div class="card-body">
+          <h4 class="card-title">
+            <a [href]="getTrustedGoodUrl(good.linkOnProduct)">More...</a>
+          </h4>
+          <p class="card-text">{{good.name}}</p>
+          <p class="card-price">{{good.price}} {{good.currencyName}}</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+<!-- /.container -->
