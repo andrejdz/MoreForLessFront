@@ -1,4 +1,4 @@
 export class CommentGood {
-    goodId: string;
+    goodId: number;
     text: string;
 }
