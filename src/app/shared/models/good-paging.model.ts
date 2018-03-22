@@ -3,5 +3,5 @@ import { Good } from './good.model';
 
 export class GoodPaging {
     goods: Good[];
-    paging: Paging;
+    pageInfo: Paging;
 }
