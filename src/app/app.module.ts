@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { MainModule } from '@modules/main.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { GoodService } from '@services/good.service';
+import { GoodService, CommentService, ScoreService } from '@services/index';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from '@modules/nav-bar/nav-bar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -16,9 +17,10 @@ import { NavBarComponent } from '@modules/nav-bar/nav-bar.component';
     BrowserModule,
     MainModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule.forRoot()
   ],
-  providers: [GoodService],
+  providers: [GoodService, CommentService, ScoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
