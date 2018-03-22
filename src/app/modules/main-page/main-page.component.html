@@ -1,31 +1,44 @@
-<!-- Page Content -->
-<div *ngIf="goodsLoading" class="fa fa-spinner fa-pulse fa-3x fa-fw goods-spinner"></div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3">
-      <div class="list-group">
-        <a href="#" class="list-group-item">Category 1</a>
-        <a href="#" class="list-group-item">Category 2</a>
-        <a href="#" class="list-group-item">Category 3</a>
+<div class="main-good">
+
+  <div *ngIf="goodsLoading" class="fa fa-spinner fa-pulse fa-3x fa-fw good-spinner"></div>
+  <div id="mySidenav" class="sidenav">
+    <a class="closebtn" (click)="closeNav()">&times;</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-secondary good-open-button" (click)="openNav()">Categories</button>
       </div>
     </div>
-    <!-- /.col-lg-3 -->
-    <div class="col-lg-3 col-md-6 mb-4" *ngFor="let good of goods">
-      <div class="card h-100">
-        <img class="card-img-top" src="{{good.linkOnPicture}}" alt="No image">
-        <div class="card-body">
-          <h4 class="card-title">
-            <a [href]="getTrustedGoodUrl(good.linkOnProduct)">More...</a>
-          </h4>
-          <p class="card-text">{{good.name}}</p>
-          <p class="card-price">{{good.price}} {{good.currencyName}}</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+
+    <div class="row">
+      <div class="col-4 good-card" *ngFor="let good of goods">
+        <div class="card h-100" [class.selected]="good">
+          <img class="card-img-top" src="{{good.linkOnPicture}}" alt="No image">
+          <div class="card-body">
+            <p class="card-text">{{good.name}}</p>
+            <b>
+              <p class="card-price">{{good.price}} {{good.currencyName}}</p>
+            </b>
+          </div>
+          <div class="card-footer">
+            <a class="btn btn-success good-more-button" (click)="moreLink(good)">More...</a>
+            <ngb-rating class="text-warning" [rate]="good.average" max="5" readonly="true"></ngb-rating>
+          </div>
         </div>
       </div>
     </div>
-    <br>
+
+    <div class="row">
+      <div class="col good-pages">
+        <ngb-pagination *ngIf="pageInfo" [collectionSize]="pageInfo.totalItems" [(page)]="pageInfo.currentPage" [(pageSize)]="pageInfo.itemsPerPage"
+          [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="pageChanged()"></ngb-pagination>
+      </div>
+    </div>
   </div>
 </div>
-<!-- /.container -->
