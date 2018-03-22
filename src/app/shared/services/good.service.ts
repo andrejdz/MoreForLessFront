@@ -10,6 +10,7 @@ import { CommentGood } from '@models/comment-good.model';
 @Injectable()
 export class GoodService {
 
+    private observer: Observable<any>;
     private readonly operationsPath: string = 'api/goods';
 
     constructor(private httpClient: HttpClient) { }
@@ -33,6 +34,15 @@ export class GoodService {
             .pipe(
                 catchError(this.handleError<GoodPaging>(`getAllGoods(${currentPage}, ${itemsPerPage})`))
             );
+    }
+
+    public sendData(any: any) {
+        this.observer = new Observable<any>(
+            o => o.next(any));
+    }
+
+    receiveData(): Observable<any> {
+        return this.observer;
     }
 
     private handleError<T>(operation: string, result?: T) {
