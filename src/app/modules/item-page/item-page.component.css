@@ -1,0 +1,28 @@
+.main-good{
+    margin-top: 5rem;
+}
+
+.btn.btn-success.good-to-store-button{
+    margin-right: 35rem;
+    color: #f1f1f1;
+}
+
+.comment-form{
+    margin-bottom: 2rem;
+}
+
+.btn.btn-success.comment-submit{
+    margin-top: 2rem;
+}
+
+.card-title{
+    font-size: 14pt
+}
+
+.card-img{
+    margin: 5px auto;
+    max-width: 200px;
+    max-height:240px;
+    width: auto;
+    height: auto;
+}

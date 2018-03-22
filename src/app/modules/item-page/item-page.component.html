@@ -1,0 +1,47 @@
+<div class="main-good">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-9">
+        <div class="card mt-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-3">
+                <img class="card-img" src="{{good.linkOnPicture}}" alt="No image">
+              </div>
+              <div class="col-9">
+                <p class="card-text">{{good.name}}</p>
+                <p class="card-price">{{good.price}} {{good.currencyName}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="btn btn-success good-to-store-button" href="{{good.linkOnProduct}}" target="_blank">To Store</a>
+            <ngb-rating class="text-warning" [rate]="score" max="5" (rateChange)="rateChanged($event)"></ngb-rating>
+            {{score}} stars
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-9">
+        <div class="card card-outline-secondary my-4">
+          <div class="card-header">
+            Product Reviews
+          </div>
+          <div class="card-body">
+            <form class="comment-form" (ngSubmit)="onSubmit()" #commentForm="ngForm">
+              <textarea class="form-control comment-text" name="commentName" #commentName=ngModel [(ngModel)]="commentText" disabled="{{disabled}}" rows="5" placeholder="Leave feadback there"></textarea>
+              <button type="submit" class="btn btn-success comment-submit" [disabled]="commentName.invalid || commentName.pristine">Leave a Review</button>
+            </form>
+            <div *ngFor="let comment of good.comments">
+              <p>{{comment.text}}</p>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
