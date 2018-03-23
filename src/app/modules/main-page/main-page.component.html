@@ -3,12 +3,20 @@
   <div *ngIf="goodsLoading" class="fa fa-spinner fa-pulse fa-3x fa-fw good-spinner"></div>
   <div id="mySidenav" class="sidenav">
     <a class="closebtn" (click)="closeNav()">&times;</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
+    <div *ngFor="let category of categories">
+      <a class="root-category" [class.selected]="category" (click)="chooseCategory(category.idAtStore)">{{category.name}}</a>
+      <div *ngFor="let subcategory of category.childrenCategories">
+        <a class="sub-category" [class.selected]="subcategory" (click)="chooseCategory(subcategory.idAtStore)">
+          {{subcategory.name}}
+        </a>
+        <div *ngFor="let subsubcategory of subcategory.childrenCategories">
+            <a class="sub-sub-category" [class.selected]="subsubcategory" (click)="chooseCategory(subsubcategory.idAtStore)">
+              {{subsubcategory.name}}
+            </a>
+          </div>
+      </div>
+    </div>
   </div>
-
   <div class="container">
     <div class="row">
       <div class="col">

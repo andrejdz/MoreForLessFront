@@ -10,8 +10,8 @@ import { CommentGood } from '@models/comment-good.model';
 @Injectable()
 export class GoodService {
 
-    private observer: Observable<any>;
     private readonly operationsPath: string = 'api/goods';
+    public good: Good;
 
     constructor(private httpClient: HttpClient) { }
 
@@ -24,25 +24,18 @@ export class GoodService {
 
     public getAllGoods(
         currentPage: number,
-        itemsPerPage: number): Observable<GoodPaging> {
+        itemsPerPage: number,
+        categoryId: string): Observable<GoodPaging> {
         const httpParams = new HttpParams()
             .append('currentPage', `${currentPage}`)
-            .append('itemsPerPage', `${itemsPerPage}`);
+            .append('itemsPerPage', `${itemsPerPage}`)
+            .append('categoryId', `${categoryId}`);
 
         return this.httpClient.get<GoodPaging>(
             `${environment.apiUrl}${this.operationsPath}`, { params: httpParams })
             .pipe(
-                catchError(this.handleError<GoodPaging>(`getAllGoods(${currentPage}, ${itemsPerPage})`))
+                catchError(this.handleError<GoodPaging>(`getAllGoods(${currentPage}, ${itemsPerPage}, ${categoryId})`))
             );
-    }
-
-    public sendData(any: any) {
-        this.observer = new Observable<any>(
-            o => o.next(any));
-    }
-
-    receiveData(): Observable<any> {
-        return this.observer;
     }
 
     private handleError<T>(operation: string, result?: T) {

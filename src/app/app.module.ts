@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { MainModule } from '@modules/main.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { GoodService, CommentService, ScoreService } from '@services/index';
+import { GoodService, CommentService, ScoreService, CategoryService } from '@services/index';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from '@modules/nav-bar/nav-bar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -20,7 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgbModule.forRoot()
   ],
-  providers: [GoodService, CommentService, ScoreService],
+  providers: [GoodService, CommentService,
+    ScoreService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

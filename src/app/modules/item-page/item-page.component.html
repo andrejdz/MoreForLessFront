@@ -17,6 +17,7 @@
           </div>
           <div class="card-footer">
             <a class="btn btn-success good-to-store-button" href="{{good.linkOnProduct}}" target="_blank">To Store</a>
+            <button class="btn btn-secondary good-back-button" (click)="goBack()">Back</button>
             <ngb-rating class="text-warning" [rate]="score" max="5" (rateChange)="rateChanged($event)"></ngb-rating>
             {{score}} stars
           </div>

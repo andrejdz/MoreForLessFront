@@ -3,7 +3,12 @@
 }
 
 .btn.btn-success.good-to-store-button{
-    margin-right: 35rem;
+    margin-right: 2rem;
+    color: #f1f1f1;
+}
+
+.btn.btn-secondary.good-back-button{
+    margin-right: 30rem;
     color: #f1f1f1;
 }
 

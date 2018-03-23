@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Good } from '@models/good.model';
 import { GoodService, CommentService, ScoreService } from '@services/index';
 import { CommentGood } from '@models/comment-good.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-item-page',
@@ -19,13 +20,18 @@ export class ItemPageComponent implements OnInit {
   constructor(
     private goodService: GoodService,
     private commentService: CommentService,
-    private scoreService: ScoreService) {
-    goodService.receiveData().subscribe(
-      good => this.good = good);
+    private scoreService: ScoreService,
+    private location: Location) {
   }
 
   ngOnInit() {
-    this.score = Math.round(this.good.average);
+    this.good = this.goodService.good;
+
+    if (this.good.average == null) {
+      this.score = 0;
+    } else {
+      this.score = Math.round(this.good.average);
+    }
   }
 
   addComment(text: string) {
@@ -52,5 +58,9 @@ export class ItemPageComponent implements OnInit {
     if (score !== 0) {
       this.addScore(score);
     }
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

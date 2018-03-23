@@ -1,7 +1,7 @@
 import { CommentGood } from './comment-good.model';
 import { Category } from './category.model';
 
-export class Good {
+export class JSON {
     id: number;
     name: string;
     price: number;
@@ -10,8 +10,9 @@ export class Good {
     linkOnPicture: string;
     currencyName: string;
     shopName: string;
+    categoryId: number | null;
     comments: CommentGood[];
-    average: number | null | undefined;
+    average: number | null;
     categoryIdOnShop: string;
-    categoryIdsOnShop: Category[] | null | undefined;
+    categoryIdsOnShop: Category[] | null;
 }
