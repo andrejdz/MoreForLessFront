@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:25658/',
+  apiUrl: 'http://moreforless.azurewebsites.net/',
   frontendUrl: 'http://localhost:4200/',
 };
